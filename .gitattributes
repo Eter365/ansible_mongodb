@@ -1,3 +1,4 @@
  *.sh linguist-language=python
  *.py linguist-language=python
  *.yml linguist-language=yaml
+ *.rb linguist-language=python
