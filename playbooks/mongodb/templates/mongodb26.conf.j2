@@ -1,0 +1,38 @@
+systemLog:
+ destination: file
+ path: /work/mongodb7105/log/mongod-7105.log
+ logAppend: true
+ quiet: true
+
+storage:
+ dbPath: /work/mongodb7105/var
+ directoryPerDB: true
+ journal:
+  enabled: true
+
+net:
+ port: 7105  
+ unixDomainSocket:
+  enabled: true
+
+ http:
+  enabled: false
+  RESTInterfaceEnabled: false
+
+operationProfiling:
+ slowOpThresholdMs: 500
+ mode: slowOp
+
+processManagement:
+ fork: true
+ pidFilePath: /work/mongodb7105/tmp/mongod-7105.pid
+
+security:
+ keyFile: /work/mongodb7105/key/keyFile
+
+setParameter:
+ enableLocalhostAuthBypass: true
+
+replication:
+ replSetName: 7105
+ oplogSizeMB: 20480

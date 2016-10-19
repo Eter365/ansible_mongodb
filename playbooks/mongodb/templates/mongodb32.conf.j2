@@ -1,0 +1,45 @@
+systemLog:
+ destination: file
+ path: /work/mongodb{{ dbPort | default("9999") }}/log/mongod.log
+ logAppend: true
+ quiet: true 
+
+storage:
+ journal:
+  enabled: true
+ dbPath: /work/mongodb{{ dbPort | default("9999") }}/var/
+ directoryPerDB: true
+ engine: wiredTiger 
+ wiredTiger:
+  engineConfig:
+   cacheSizeGB: {{ cacheSize | default("1") }} 
+   directoryForIndexes: true
+  collectionConfig:
+   blockCompressor: {{ compressMode | default("zlib") }} 
+  indexConfig:
+   prefixCompression: {{ prefixCompressionMode | default("true") }}
+
+processManagement:
+ fork: true
+ pidFilePath: /work/mongodb{{ dbPort | default("9999") }}/tmp/mongod.pid
+
+net:
+ port: {{ dbPort | default("9999") }}
+ http:
+  enabled: false
+  JSONPEnabled: false
+  RESTInterfaceEnabled: false
+
+operationProfiling:
+ slowOpThresholdMs: 200
+ mode: slowOp 
+
+security:
+ keyFile: /work/mongodb{{ dbPort | default("9999") }}/key/keyFile
+
+setParameter:
+ enableLocalhostAuthBypass: true
+
+replication:
+ oplogSizeMB: 40960
+ replSetName: {{ dbPort | default("9999") }} 
