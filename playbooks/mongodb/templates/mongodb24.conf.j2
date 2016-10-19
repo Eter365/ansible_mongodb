@@ -1,0 +1,23 @@
+### SERVER
+fork = true
+port = 7112
+quiet = true
+dbpath = /work/mongodb7112/var
+pidfilepath = /work/mongodb7112/tmp/mongod.pid
+logpath = /work/mongodb7112/log/mongod.log
+logappend = true
+journal = true
+nohttpinterface = true
+directoryperdb = true
+
+### SLOW_LOG
+profile = 1
+slowms = 100
+
+### ReplSet
+replSet = shard2
+oplogSize = 40960
+
+### USER
+keyFile=/wrok/mongodb7001/key/keyFile
+setParameter=enableLocalhostAuthBypass=1
