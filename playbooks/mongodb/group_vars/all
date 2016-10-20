@@ -1,3 +1,0 @@
-mongodb_datadir_prefix: /work/
-iface: '{{ ansible_default_ipv4.interface }}'
-mongo_admin_pass: 123456
