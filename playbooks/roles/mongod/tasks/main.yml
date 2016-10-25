@@ -1,0 +1,25 @@
+---
+- name: create mongodb{{ dbPort }} instance dir
+  file: path=/work/mongodb{{ dbPort }}     state=directory mode=0755
+  tags: mongodb32
+- name: create mongodb{{ dbPort }} etc
+  file: path=/work/mongodb{{ dbPort }}/etc state=directory mode=0755
+  tags: mongodb32
+- name: create mongodb{{ dbPort }} key
+  file: path=/work/mongodb{{ dbPort }}/key state=directory mode=0755
+  tags: mongodb32
+- name: create mongodb{{ dbPort }} var
+  file: path=/work/mongodb{{ dbPort }}/var state=directory mode=0755
+  tags: mongodb32
+- name: create mongodb{{ dbPort }} log
+  file: path=/work/mongodb{{ dbPort }}/log state=directory mode=0755
+  tags: mongodb32
+- name: create mongodb{{ dbPort }} tmp
+  file: path=/work/mongodb{{ dbPort }}/tmp state=directory mode=0755
+  tags: mongodb32
+- name: copy mongodb{{ dbPort }}.conf config 
+  template: src=mongodb32.conf.j2 dest=/work/mongodb{{ dbPort }}/etc/mongodb{{ dbPort }}.conf mode=0644
+  tags: mongodb32
+- name: copy keyFile
+  template: src=secret.key dest=/work/mongodb{{ dbPort }}/key/keyFile mode=0400
+  tags: mongodb32
