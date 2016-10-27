@@ -1,0 +1,14 @@
+db.createUser(
+{
+   user:"root",
+   pwd:"B033562027D95A0F17",
+   roles:["root"]
+}
+)
+db.createUser(
+{
+   user:"monitor",
+   pwd:"B033562027D95A0F17",
+   roles:["root"]
+}
+)

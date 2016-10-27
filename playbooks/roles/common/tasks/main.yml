@@ -2,8 +2,8 @@
 # tasks file for common
 # This Playbook runs all the common plays in the deployment
 
-- name: Create the repository for 58mongodb 
+- name: Prepare phase | 1st
   copy: src=58db.repo.j2 dest=/etc/yum.repos.d/58db.repo
 
-- name: Install the mongodb package
+- name: Prepare phase | 2nd 
   yum: name=58mongodb32 enablerepo=58db state=latest

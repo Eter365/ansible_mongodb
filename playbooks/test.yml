@@ -1,0 +1,9 @@
+---
+- name: Instances Manager stopped
+  hosts: primary
+  gather_facts: false
+  vars:
+    dbPort: 23334
+  tasks:
+    - name: stopped mongod
+      command: sh /etc/init.d/mongod23334 stop
