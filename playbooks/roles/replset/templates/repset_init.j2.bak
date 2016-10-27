@@ -1,0 +1,8 @@
+config={ "_id:{{ dbPort }}",members:[{ "_id:0", "{{ groups.['primary'] }}:{{ dbPort }}", "priority:10" }]}
+rs.initiate(config)
+sleep(13000)
+{% for host in groups['secondary'] %}
+rs.add("{{ host }}:{{ dbPort }}")
+sleep(8000)
+{% endfor %}
+printjson(rs.status())

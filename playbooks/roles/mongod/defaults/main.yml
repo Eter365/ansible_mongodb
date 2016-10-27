@@ -1,5 +1,5 @@
 ---
 # defaults file for mongod
 
-dbPort: 23333
-cacheSize: 5
+mongo_bin: "/opt/soft/mongodb3210/bin/mongo"
+mongod_bin: "/opt/soft/mongodb3210/bin/mongod"

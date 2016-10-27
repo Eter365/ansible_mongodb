@@ -1,0 +1,7 @@
+---
+# defaults file for replset 
+
+mongo_bin: "/opt/soft/mongodb3210/bin/mongo"
+mongod_bin: "/opt/soft/mongodb3210/bin/mongod"
+mongodb_tmp_prefix: "/srv"
+SCRIPTPATH: "/work/github/ansible/playbooks/roles/replset/templates"

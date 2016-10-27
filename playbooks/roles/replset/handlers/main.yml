@@ -1,8 +1,11 @@
 ---
-# handlers file for mongod
+# handlers file for replset
 
 - name: started mongod
   command: sh /etc/init.d/mongod{{ dbPort }} start
 
 - name: stopped mongod
   command: sh /etc/init.d/mongod{{ dbPort }} stop
+
+- name: restarted mongod
+  command: sh /etc/init.d/mongod{{ dbPort }} restart 
