@@ -3,9 +3,9 @@
 
 ##### 1. Install/Uninstall mongodb software
 
-###### 1.1 version 2.4
-###### 1.2 version 2.6
-###### 1.3 version 3.2
+###### 1.1 version 2.6
+###### 1.2 version 3.2
+###### 1.3 version 3.4(upcoming)
 
 ##### 2. mongodb instance state manager:
 
