@@ -4,6 +4,15 @@
 
 - name: Prepare phase | 1st
   copy: src=58db.repo.j2 dest=/etc/yum.repos.d/58db.repo
+  tags: Prepare phase
 
 - name: Prepare phase | 2nd 
   yum: name=58mongodb32 enablerepo=58db state=latest
+  tags: install mongod[3.2] 
+  when: mongod_version == '3.2'
+
+- name: Prepare phase | 2nd 
+  yum: name=58mongodb26 enablerepo=58db state=latest
+  tags: install mongod[2.6] 
+  when: mongod_version == '2.6'
+

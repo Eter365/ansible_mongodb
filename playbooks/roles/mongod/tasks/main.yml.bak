@@ -1,11 +1,11 @@
 ---
 - name: create mongodb{{ dbPort }} | 1st
   file: path=/work/mongodb{{ dbPort }} state=directory mode=0755
-  tags: init instance 
+  tags: mongodb32
 
 - name: create mongodb{{ dbPort }} | 2nd
   file: path=/work/mongodb{{ dbPort }}/{{ item.dir }} state=directory mode=0755
-  tags: init instance
+  tags: mongodb32
   with_items:
     - { dir: 'etc' }
     - { dir: 'key' }
@@ -15,26 +15,13 @@
 
 - name: create mongodb{{ dbPort }} | 3rd
   template: src=mongodb32.conf.j2 dest=/work/mongodb{{ dbPort }}/etc/mongodb{{ dbPort }}.conf mode=0644
-  tags: init config[3.2] 
-  when: mongod_version == '3.2'
-
-- name: create mongodb{{ dbPort }} | 3rd
-  template: src=mongodb26.conf.j2 dest=/work/mongodb{{ dbPort }}/etc/mongodb{{ dbPort }}.conf mode=0644
-  tags: init config[2.6] 
-  when: mongod_version == '2.6'
+  tags: mongodb32
 
 - name: create mongodb{{ dbPort }} | 4th
   template: src=secret.key dest=/work/mongodb{{ dbPort }}/key/keyFile mode=0400
-  tags: init keyFile
+  tags: mongodb32
 
 - name: create mongodb{{ dbPort }} | 5th
-  template: src=service32.sh.j2 dest=/etc/init.d/mongod{{ dbPort }} mode=0755
-  tags: start mongod[3.2]
+  template: src=service.sh.j2 dest=/etc/init.d/mongod{{ dbPort }} mode=0755
+  tags: mongodb32
   notify: started mongod 
-  when: mongod_version == '3.2'
-
-- name: create mongodb{{ dbPort }} | 5th
-  template: src=service26.sh.j2 dest=/etc/init.d/mongod{{ dbPort }} mode=0755
-  tags: start mongod[2.6]
-  notify: started mongod 
-  when: mongod_version == '2.6'

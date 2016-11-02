@@ -1,0 +1,12 @@
+---
+# tasks file for replset
+
+- name: init primary node | 7th 
+  tags: mongodb32
+  local_action: script ../templates/rsadd.sh {{ item }} {{ dbPort }}
+  with_items: "{{ groups['primary'] }}"
+  register: rsstatus
+
+- name: show debug info
+  debug: var={{ item }}
+  with_items: rsstatus.results
