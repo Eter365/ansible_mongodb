@@ -1,12 +1,12 @@
 ---
 # This Playbook would deploy the whole mongodb cluster with replication and sharding.
 #
-- name: create mongodb
-  gather_facts: false
-  hosts: mongod 
-  roles:
-  - role: mongod 
-  tags: init instances
+#- name: create mongodb
+#  gather_facts: false
+#  hosts: mongod 
+#  roles:
+#  - role: mongod 
+#  tags: init instances
 
 - name: init replset
   gather_facts: false

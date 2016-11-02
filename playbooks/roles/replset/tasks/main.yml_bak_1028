@@ -1,38 +1,33 @@
 ---
 # tasks file for replset
-#
+
 - name: init primary node | 1st
   command: sh /etc/init.d/mongod{{ dbPort }} nastart 
-  tags: no-auth start 
+  tags: mongodb32
 
 - name: init primary node | 2nd
   local_action: file path={{ mongodb_tmp_prefix }}/{{ dbPort }} state=directory owner=root group=root
-  tags: init primary
+  tags: mongodb32
 
 - name: init primary node | 3rd 
-  tags: init primary 
+  tags: mongodb32
   local_action: script ../templates/adduser.sh {{ item }} {{ dbPort }}  
   with_items: "{{ groups['primary'] }}"
   ignore_errors: yes
 
 - name: init primary node | 4th 
   local_action: template src=repset_init.j2 dest={{ mongodb_tmp_prefix }}/{{ dbPort  }}/repset_init.js mode=0644
-  tags: init replset
+  tags: mongodb32
 
 - name: init primary node | 5th
   command: sh /etc/init.d/mongod{{ dbPort }} restart 
-  tags: restart mongod
+  tags: mongodb32
 
 - name: init primary node | 6th
   pause: seconds=5
-  tags: Pause 5s
+  tags: mongodb32
 
 - name: init primary node | 7th 
-  tags: init replset
+  tags: mongodb32
   local_action: script ../templates/rsadd.sh {{ item }} {{ dbPort }}
   with_items: "{{ groups['primary'] }}"
-  register: rsstatus
-
-- name: show replset status 
-  debug: var={{ item }}
-  with_items: rsstatus.results

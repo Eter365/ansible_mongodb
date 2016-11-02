@@ -1,7 +1,7 @@
 ---
 # This Playbook would deploy the whole mongodb cluster with replication and sharding.
 #
-- name: create mongodb
+- name: init instamces
   gather_facts: false
   hosts: mongod 
   roles:

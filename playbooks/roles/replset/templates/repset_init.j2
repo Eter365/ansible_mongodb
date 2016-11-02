@@ -1,5 +1,5 @@
 {% for primary_host in groups['primary'] %}
-conf={ _id:"{{ dbPort }}", members:[{ _id:0, host:"{{ primary_host }}:{{ dbPort }}", priority:10 }]}
+conf={_id:"{{ dbPort }}", members:[{ _id:0, host:"{{ primary_host }}:{{ dbPort }}", priority:10 }]}
 {% endfor %}
 rs.initiate(conf)
 sleep(5000)
