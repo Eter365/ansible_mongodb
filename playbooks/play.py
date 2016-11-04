@@ -62,6 +62,7 @@ try:
               stdout_callback=results_callback,  # Use our custom callback instead of the ``default`` callback plugin
           )
     result = tqm.run(play)
+
 finally:
     if tqm is not None:
         tqm.cleanup()
