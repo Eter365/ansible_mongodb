@@ -1,2 +1,17 @@
 ---
 # defaults file for mongoc
+
+# default version
+mongod_version: "3.2"
+
+###### For mongodb 3.2
+mongo_bin: "/opt/soft/mongodb3210/bin/mongo"
+mongod_bin: "/opt/soft/mongodb3210/bin/mongod"
+
+###### For mongodb 2.6 
+mongo26_bin: "/opt/soft/mongodb2610/bin/mongo"
+mongod26_bin: "/opt/soft/mongodb2610/bin/mongod"
+
+###### For mongodb 2.4 
+mongo24_bin: "/opt/soft/mongodb2414/bin/mongo"
+mongod24_bin: "/opt/soft/mongodb2414/bin/mongod"

@@ -8,9 +8,16 @@
 #  - role: mongod 
 #  tags: init instances
 
-- name: init replset
+#- name: init replset
+#  gather_facts: false
+#  hosts: primary 
+#  roles:
+#  - role: replset 
+#  tags: init replset
+
+- name: init configsvr
   gather_facts: false
-  hosts: primary 
+  hosts: configsvr
   roles:
-  - role: replset 
-  tags: init replset
+  - role: mongoc
+  tags: init configsvr 

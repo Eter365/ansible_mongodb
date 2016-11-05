@@ -13,7 +13,7 @@ target = 32
 step   = 5
 iplist = []
 groups = []
-
+port   = 7301
 ##################################
 def getIpListFromFile(ipfile):
     """
@@ -67,19 +67,24 @@ if __name__ == '__main__':
 
         groups=getIpGroups(target=32,step=5,iplist=fiplist)
 
-        for port in range(7301, 7333):
-            for group in groups:
-                inventory_file="./inventory/inventory_%s" % port
-                inventory_info=createInventoryFile(inventory_file,
-                                              group,
-                                              group[0],
-                                              group[1:])
+        for group in groups:
 
-                with open(inventory_file, "w") as f:
-                    f.write(inventory_info)
+            inventory_file="./inventory/inventory_%s" % port
+            inventory_info=createInventoryFile(inventory_file,
+                                          group,
+                                          group[0],
+                                          group[1:])
 
-                print(inventory_info)
-                break
+            with open(inventory_file, "w") as f:
+                f.write(inventory_info)
+
+            print(inventory_file)
+            print(group)
+            print(inventory_info)
+            print(">>" * 40)
+
+            port+=1
+
 
     except Exception as e:
         print e

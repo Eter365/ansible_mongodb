@@ -1,0 +1,224 @@
+
+PLAY [init instamces] **********************************************************
+
+TASK [common : Prepare phase | 1st] ********************************************
+ok: [10.136.220.15]
+ok: [10.136.219.219]
+ok: [10.136.200.23]
+ok: [10.136.199.229]
+ok: [10.136.219.200]
+
+TASK [common : Prepare phase | 2nd] ********************************************
+
+TASK [common : Prepare phase | 2nd] ********************************************
+ok: [10.136.220.15]
+ok: [10.136.219.219]
+ok: [10.136.200.23]
+ok: [10.136.219.200]
+ok: [10.136.199.229]
+
+TASK [mongod : create mongodb7314 | 1st] ***************************************
+changed: [10.136.220.15]
+changed: [10.136.219.219]
+changed: [10.136.200.23]
+changed: [10.136.219.200]
+changed: [10.136.199.229]
+
+TASK [mongod : create mongodb7314 | 2nd] ***************************************
+changed: [10.136.220.15] => (item={u'dir': u'etc'})
+changed: [10.136.219.219] => (item={u'dir': u'etc'})
+changed: [10.136.219.200] => (item={u'dir': u'etc'})
+changed: [10.136.199.229] => (item={u'dir': u'etc'})
+changed: [10.136.200.23] => (item={u'dir': u'etc'})
+changed: [10.136.220.15] => (item={u'dir': u'key'})
+changed: [10.136.219.219] => (item={u'dir': u'key'})
+changed: [10.136.199.229] => (item={u'dir': u'key'})
+changed: [10.136.219.200] => (item={u'dir': u'key'})
+changed: [10.136.200.23] => (item={u'dir': u'key'})
+changed: [10.136.220.15] => (item={u'dir': u'var'})
+changed: [10.136.219.219] => (item={u'dir': u'var'})
+changed: [10.136.199.229] => (item={u'dir': u'var'})
+changed: [10.136.200.23] => (item={u'dir': u'var'})
+changed: [10.136.219.200] => (item={u'dir': u'var'})
+changed: [10.136.220.15] => (item={u'dir': u'log'})
+changed: [10.136.219.219] => (item={u'dir': u'log'})
+changed: [10.136.199.229] => (item={u'dir': u'log'})
+changed: [10.136.200.23] => (item={u'dir': u'log'})
+changed: [10.136.219.200] => (item={u'dir': u'log'})
+changed: [10.136.220.15] => (item={u'dir': u'tmp'})
+changed: [10.136.219.219] => (item={u'dir': u'tmp'})
+changed: [10.136.199.229] => (item={u'dir': u'tmp'})
+changed: [10.136.200.23] => (item={u'dir': u'tmp'})
+changed: [10.136.219.200] => (item={u'dir': u'tmp'})
+
+TASK [mongod : create mongodb7314 | 3rd] ***************************************
+
+TASK [mongod : create mongodb7314 | 3rd] ***************************************
+changed: [10.136.220.15]
+changed: [10.136.200.23]
+changed: [10.136.219.219]
+changed: [10.136.199.229]
+changed: [10.136.219.200]
+
+TASK [mongod : create mongodb7314 | 4th] ***************************************
+changed: [10.136.220.15]
+changed: [10.136.219.219]
+changed: [10.136.200.23]
+changed: [10.136.219.200]
+changed: [10.136.199.229]
+
+TASK [mongod : create mongodb7314 | 5th] ***************************************
+
+TASK [mongod : create mongodb7314 | 5th] ***************************************
+changed: [10.136.220.15]
+changed: [10.136.219.219]
+changed: [10.136.219.200]
+changed: [10.136.200.23]
+changed: [10.136.199.229]
+
+RUNNING HANDLER [mongod : started mongod] **************************************
+changed: [10.136.220.15]
+changed: [10.136.219.219]
+changed: [10.136.199.229]
+changed: [10.136.200.23]
+changed: [10.136.219.200]
+
+PLAY [init replset] ************************************************************
+
+TASK [replset : init primary node | 1st] ***************************************
+changed: [10.136.219.200]
+
+TASK [replset : init primary node | 2nd] ***************************************
+ok: [10.136.219.200 -> localhost]
+
+TASK [replset : init primary node | 3rd] ***************************************
+changed: [10.136.219.200 -> localhost] => (item=10.136.219.200)
+
+TASK [replset : init primary node | 4th] ***************************************
+ok: [10.136.219.200 -> localhost]
+
+TASK [replset : init primary node | 5th] ***************************************
+changed: [10.136.219.200]
+
+TASK [replset : init primary node | 6th] ***************************************
+Pausing for 5 seconds
+(ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+ok: [10.136.219.200]
+
+TASK [replset : init primary node | 7th] ***************************************
+changed: [10.136.219.200 -> localhost] => (item=10.136.219.200)
+
+TASK [replset : show replset status] *******************************************
+ok: [10.136.219.200] => (item=rsstatus.results) => {
+    "item": "rsstatus.results", 
+    "rsstatus.results": [
+        {
+            "_ansible_delegated_vars": {
+                "ansible_host": "localhost"
+            }, 
+            "_ansible_item_result": true, 
+            "_ansible_no_log": false, 
+            "changed": true, 
+            "invocation": {
+                "module_args": {
+                    "_raw_params": "../templates/rsadd.sh 10.136.219.200 7314"
+                }, 
+                "module_name": "script"
+            }, 
+            "item": "10.136.219.200", 
+            "rc": 0, 
+            "stderr": "", 
+            "stdout": "MongoDB shell version: 3.2.10\nconnecting to: 10.136.219.200:7314/admin\nCannot use 'commands' readMode, degrading to 'legacy' mode\n{\n\t\"set\" : \"7314\",\n\t\"date\" : ISODate(\"2016-11-05T10:12:47Z\"),\n\t\"myState\" : 1,\n\t\"members\" : [\n\t\t{\n\t\t\t\"_id\" : 0,\n\t\t\t\"name\" : \"10.136.219.200:7314\",\n\t\t\t\"health\" : 1,\n\t\t\t\"state\" : 1,\n\t\t\t\"stateStr\" : \"PRIMARY\",\n\t\t\t\"uptime\" : 42,\n\t\t\t\"optime\" : Timestamp(1478340759, 1),\n\t\t\t\"optimeDate\" : ISODate(\"2016-11-05T10:12:39Z\"),\n\t\t\t\"electionTime\" : Timestamp(1478340731, 1),\n\t\t\t\"electionDate\" : ISODate(\"2016-11-05T10:12:11Z\"),\n\t\t\t\"self\" : true\n\t\t},\n\t\t{\n\t\t\t\"_id\" : 1,\n\t\t\t\"name\" : \"10.136.219.219:7314\",\n\t\t\t\"health\" : 1,\n\t\t\t\"state\" : 2,\n\t\t\t\"stateStr\" : \"SECONDARY\",\n\t\t\t\"uptime\" : 32,\n\t\t\t\"optime\" : Timestamp(1478340759, 1),\n\t\t\t\"optimeDate\" : ISODate(\"2016-11-05T10:12:39Z\"),\n\t\t\t\"lastHeartbeat\" : ISODate(\"2016-11-05T10:12:47Z\"),\n\t\t\t\"lastHeartbeatRecv\" : ISODate(\"2016-11-05T10:12:46Z\"),\n\t\t\t\"pingMs\" : 0,\n\t\t\t\"syncingTo\" : \"10.136.219.200:7314\"\n\t\t},\n\t\t{\n\t\t\t\"_id\" : 2,\n\t\t\t\"name\" : \"10.136.220.15:7314\",\n\t\t\t\"health\" : 1,\n\t\t\t\"state\" : 2,\n\t\t\t\"stateStr\" : \"SECONDARY\",\n\t\t\t\"uptime\" : 24,\n\t\t\t\"optime\" : Timestamp(1478340759, 1),\n\t\t\t\"optimeDate\" : ISODate(\"2016-11-05T10:12:39Z\"),\n\t\t\t\"lastHeartbeat\" : ISODate(\"2016-11-05T10:12:47Z\"),\n\t\t\t\"lastHeartbeatRecv\" : ISODate(\"2016-11-05T10:12:46Z\"),\n\t\t\t\"pingMs\" : 0,\n\t\t\t\"syncingTo\" : \"10.136.219.200:7314\"\n\t\t},\n\t\t{\n\t\t\t\"_id\" : 3,\n\t\t\t\"name\" : \"10.136.199.229:7314\",\n\t\t\t\"health\" : 1,\n\t\t\t\"state\" : 5,\n\t\t\t\"stateStr\" : \"STARTUP2\",\n\t\t\t\"uptime\" : 16,\n\t\t\t\"optime\" : Timestamp(0, 0),\n\t\t\t\"optimeDate\" : ISODate(\"1970-01-01T00:00:00Z\"),\n\t\t\t\"lastHeartbeat\" : ISODate(\"2016-11-05T10:12:47Z\"),\n\t\t\t\"lastHeartbeatRecv\" : ISODate(\"2016-11-05T10:12:46Z\"),\n\t\t\t\"pingMs\" : 0,\n\t\t\t\"lastHeartbeatMessage\" : \"initial sync need a member to be primary or secondary to do our initial sync\"\n\t\t},\n\t\t{\n\t\t\t\"_id\" : 4,\n\t\t\t\"name\" : \"10.136.200.23:7314\",\n\t\t\t\"health\" : 1,\n\t\t\t\"state\" : 5,\n\t\t\t\"stateStr\" : \"STARTUP2\",\n\t\t\t\"uptime\" : 8,\n\t\t\t\"optime\" : Timestamp(0, 0),\n\t\t\t\"optimeDate\" : ISODate(\"1970-01-01T00:00:00Z\"),\n\t\t\t\"lastHeartbeat\" : ISODate(\"2016-11-05T10:12:47Z\"),\n\t\t\t\"lastHeartbeatRecv\" : ISODate(\"2016-11-05T10:12:46Z\"),\n\t\t\t\"pingMs\" : 0,\n\t\t\t\"lastHeartbeatMessage\" : \"initial sync need a member to be primary or secondary to do our initial sync\"\n\t\t}\n\t],\n\t\"ok\" : 1\n}\n", 
+            "stdout_lines": [
+                "MongoDB shell version: 3.2.10", 
+                "connecting to: 10.136.219.200:7314/admin", 
+                "Cannot use 'commands' readMode, degrading to 'legacy' mode", 
+                "{", 
+                "\t\"set\" : \"7314\",", 
+                "\t\"date\" : ISODate(\"2016-11-05T10:12:47Z\"),", 
+                "\t\"myState\" : 1,", 
+                "\t\"members\" : [", 
+                "\t\t{", 
+                "\t\t\t\"_id\" : 0,", 
+                "\t\t\t\"name\" : \"10.136.219.200:7314\",", 
+                "\t\t\t\"health\" : 1,", 
+                "\t\t\t\"state\" : 1,", 
+                "\t\t\t\"stateStr\" : \"PRIMARY\",", 
+                "\t\t\t\"uptime\" : 42,", 
+                "\t\t\t\"optime\" : Timestamp(1478340759, 1),", 
+                "\t\t\t\"optimeDate\" : ISODate(\"2016-11-05T10:12:39Z\"),", 
+                "\t\t\t\"electionTime\" : Timestamp(1478340731, 1),", 
+                "\t\t\t\"electionDate\" : ISODate(\"2016-11-05T10:12:11Z\"),", 
+                "\t\t\t\"self\" : true", 
+                "\t\t},", 
+                "\t\t{", 
+                "\t\t\t\"_id\" : 1,", 
+                "\t\t\t\"name\" : \"10.136.219.219:7314\",", 
+                "\t\t\t\"health\" : 1,", 
+                "\t\t\t\"state\" : 2,", 
+                "\t\t\t\"stateStr\" : \"SECONDARY\",", 
+                "\t\t\t\"uptime\" : 32,", 
+                "\t\t\t\"optime\" : Timestamp(1478340759, 1),", 
+                "\t\t\t\"optimeDate\" : ISODate(\"2016-11-05T10:12:39Z\"),", 
+                "\t\t\t\"lastHeartbeat\" : ISODate(\"2016-11-05T10:12:47Z\"),", 
+                "\t\t\t\"lastHeartbeatRecv\" : ISODate(\"2016-11-05T10:12:46Z\"),", 
+                "\t\t\t\"pingMs\" : 0,", 
+                "\t\t\t\"syncingTo\" : \"10.136.219.200:7314\"", 
+                "\t\t},", 
+                "\t\t{", 
+                "\t\t\t\"_id\" : 2,", 
+                "\t\t\t\"name\" : \"10.136.220.15:7314\",", 
+                "\t\t\t\"health\" : 1,", 
+                "\t\t\t\"state\" : 2,", 
+                "\t\t\t\"stateStr\" : \"SECONDARY\",", 
+                "\t\t\t\"uptime\" : 24,", 
+                "\t\t\t\"optime\" : Timestamp(1478340759, 1),", 
+                "\t\t\t\"optimeDate\" : ISODate(\"2016-11-05T10:12:39Z\"),", 
+                "\t\t\t\"lastHeartbeat\" : ISODate(\"2016-11-05T10:12:47Z\"),", 
+                "\t\t\t\"lastHeartbeatRecv\" : ISODate(\"2016-11-05T10:12:46Z\"),", 
+                "\t\t\t\"pingMs\" : 0,", 
+                "\t\t\t\"syncingTo\" : \"10.136.219.200:7314\"", 
+                "\t\t},", 
+                "\t\t{", 
+                "\t\t\t\"_id\" : 3,", 
+                "\t\t\t\"name\" : \"10.136.199.229:7314\",", 
+                "\t\t\t\"health\" : 1,", 
+                "\t\t\t\"state\" : 5,", 
+                "\t\t\t\"stateStr\" : \"STARTUP2\",", 
+                "\t\t\t\"uptime\" : 16,", 
+                "\t\t\t\"optime\" : Timestamp(0, 0),", 
+                "\t\t\t\"optimeDate\" : ISODate(\"1970-01-01T00:00:00Z\"),", 
+                "\t\t\t\"lastHeartbeat\" : ISODate(\"2016-11-05T10:12:47Z\"),", 
+                "\t\t\t\"lastHeartbeatRecv\" : ISODate(\"2016-11-05T10:12:46Z\"),", 
+                "\t\t\t\"pingMs\" : 0,", 
+                "\t\t\t\"lastHeartbeatMessage\" : \"initial sync need a member to be primary or secondary to do our initial sync\"", 
+                "\t\t},", 
+                "\t\t{", 
+                "\t\t\t\"_id\" : 4,", 
+                "\t\t\t\"name\" : \"10.136.200.23:7314\",", 
+                "\t\t\t\"health\" : 1,", 
+                "\t\t\t\"state\" : 5,", 
+                "\t\t\t\"stateStr\" : \"STARTUP2\",", 
+                "\t\t\t\"uptime\" : 8,", 
+                "\t\t\t\"optime\" : Timestamp(0, 0),", 
+                "\t\t\t\"optimeDate\" : ISODate(\"1970-01-01T00:00:00Z\"),", 
+                "\t\t\t\"lastHeartbeat\" : ISODate(\"2016-11-05T10:12:47Z\"),", 
+                "\t\t\t\"lastHeartbeatRecv\" : ISODate(\"2016-11-05T10:12:46Z\"),", 
+                "\t\t\t\"pingMs\" : 0,", 
+                "\t\t\t\"lastHeartbeatMessage\" : \"initial sync need a member to be primary or secondary to do our initial sync\"", 
+                "\t\t}", 
+                "\t],", 
+                "\t\"ok\" : 1", 
+                "}"
+            ]
+        }
+    ]
+}
+
+PLAY RECAP *********************************************************************
+10.136.199.229             : ok=8    changed=6    unreachable=0    failed=0   
+10.136.200.23              : ok=8    changed=6    unreachable=0    failed=0   
+10.136.219.200             : ok=16   changed=10   unreachable=0    failed=0   
+10.136.219.219             : ok=8    changed=6    unreachable=0    failed=0   
+10.136.220.15              : ok=8    changed=6    unreachable=0    failed=0   
+

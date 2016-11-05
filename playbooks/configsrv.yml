@@ -1,0 +1,9 @@
+---
+# This Playbook would deploy the configsrv node 
+
+- name: init configsvr
+  gather_facts: false
+  hosts: configsvr
+  roles:
+  - role: mongoc
+  tags: init configsvr 
