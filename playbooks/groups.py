@@ -69,20 +69,21 @@ if __name__ == '__main__':
 
         for group in groups:
 
-            inventory_file="./inventory/inventory_%s" % port
-            inventory_info=createInventoryFile(inventory_file,
-                                          group,
-                                          group[0],
-                                          group[1:])
+            #inventory_file="./inventory/inventory_%s" % port
+            #inventory_info=createInventoryFile(inventory_file,
+            #                              group,
+            #                              group[0],
+            #                              group[1:])
 
-            with open(inventory_file, "w") as f:
-                f.write(inventory_info)
+            #with open(inventory_file, "w") as f:
+            #    f.write(inventory_info)
 
-            print(inventory_file)
-            print(group)
-            print(inventory_info)
-            print(">>" * 40)
+            #print(inventory_file)
+            #print(group)
+            #print(inventory_info)
+            #print(">>" * 40)
 
+            print("sh.addShard(\"%s/%s:%s\")") % (port, group[0], port)
             port+=1
 
 

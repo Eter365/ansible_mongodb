@@ -15,9 +15,17 @@
 #  - role: replset 
 #  tags: init replset
 
-- name: init configsvr
+#- name: init configsvr
+#  gather_facts: false
+#  hosts: configsvr
+#  roles:
+#  - role: mongoc
+#  tags: init configsvr 
+#
+
+- name: init mongos
   gather_facts: false
-  hosts: configsvr
+  hosts: mongos
   roles:
-  - role: mongoc
-  tags: init configsvr 
+  - role: mongos
+  tags: init mongos

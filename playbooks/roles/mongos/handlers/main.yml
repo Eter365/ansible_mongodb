@@ -1,2 +1,8 @@
 ---
 # handlers file for mongos
+
+- name: started mongos
+  command: sh /etc/init.d/mongos{{ dbPort }} start
+
+- name: stopped mongos
+  command: sh /etc/init.d/mongos{{ dbPort }} stop

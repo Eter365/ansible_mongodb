@@ -1,2 +1,42 @@
 ---
 # tasks file for mongos
+
+- name: create mongodb{{ dbPort }} | 1st
+  file: path=/work/mongodb{{ dbPort }} state=directory mode=0755
+  tags: init configsvr instance 
+
+- name: create mongodb{{ dbPort }} | 2nd
+  file: path=/work/mongodb{{ dbPort }}/{{ item.dir }} state=directory mode=0755
+  tags: init configsvr instance 
+  with_items:
+    - { dir: 'etc' }
+    - { dir: 'key' }
+    - { dir: 'var' }
+    - { dir: 'log' }
+    - { dir: 'tmp' }
+
+- name: create mongodb{{ dbPort }} | 3rd
+  template: src=mongodb32.conf.j2 dest=/work/mongodb{{ dbPort }}/etc/mongodb{{ dbPort }}.conf mode=0644
+  tags: init configsvr[3.2] 
+  when: mongod_version == '3.2'
+
+- name: create mongodb{{ dbPort }} | 3rd
+  template: src=mongodb26.conf.j2 dest=/work/mongodb{{ dbPort }}/etc/mongodb{{ dbPort }}.conf mode=0644
+  tags: init configsvr[2.6] 
+  when: mongod_version == '2.6'
+
+- name: create mongodb{{ dbPort }} | 4th
+  template: src=secret.key dest=/work/mongodb{{ dbPort }}/key/keyFile mode=0400
+  tags: init keyFile
+
+- name: create mongodb{{ dbPort }} | 5th
+  template: src=service32.sh.j2 dest=/etc/init.d/mongos{{ dbPort }} mode=0755
+  tags: start mongos[3.2]
+  notify: started mongos 
+  when: mongod_version == '3.2'
+
+- name: create mongodb{{ dbPort }} | 5th
+  template: src=service26.sh.j2 dest=/etc/init.d/mongos{{ dbPort }} mode=0755
+  tags: start mongos[2.6]
+  notify: started mongos
+  when: mongod_version == '2.6'

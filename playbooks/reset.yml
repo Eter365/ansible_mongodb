@@ -1,18 +1,18 @@
 ---
 - name: reset instance mongodb{{ dbPort }}
   gather_facts: false
-  hosts: mongod 
+  hosts: configsvr 
   tasks:
-#    - name: stop mongod service
-#      shell: /etc/init.d/mongod{{ dbPort }} stop
-#    
-#    - name: check mongod process 
-#      shell: /bin/ps -ef | grep '/opt/soft/mongodb2610/bin/mongod' | grep -v 'grep'
-#      register: result
-#    
-#    - name: show process info
-#      debug: var=result.stdout_lines
-#
+    - name: stop mongod service
+      shell: /etc/init.d/mongoc{{ dbPort }} stop
+    
+    - name: check mongod process 
+      shell: /bin/ps -ef | grep '/opt/soft/mongodb2610/bin/mongod' | grep -v 'grep'
+      register: result
+    
+    - name: show process info
+      debug: var=result.stdout_lines
+
     - name: remove mongod service 
       file: path=/etc/init.d/mongod{{ dbPort }} state=absent
 
